@@ -26,11 +26,17 @@ async fn main() -> Result<()> {
     let mut linker = Linker::new(&engine);
     add_to_linker(&mut linker, |x| x)?;
 
-    let mut store = Store::new(&engine, WasiCtxBuilder::new().build());
+    let mut store = Store::new(
+        &engine,
+        WasiCtxBuilder::new()
+            .inherit_stdin()
+            .inherit_stdout()
+            .build(),
+    );
 
     let (wasi, _instance) = Wasi::instantiate_async(&mut store, &component, &linker).await?;
 
-    let result: Result<(), ()> = wasi.command(&mut store, 0, 0, &[], &[], &[]).await?;
+    let result: Result<(), ()> = wasi.command(&mut store, 0, 1, &[], &[], &[]).await?;
 
     if result.is_err() {
         anyhow::bail!("command returned with failing exit status");
