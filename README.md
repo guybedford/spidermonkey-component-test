@@ -23,8 +23,8 @@ node --experimental-wasi-unstable-preview1 test-preview1.js
 Result:
 
 ```
-Initialization Complete
-Result of hello(): world
+Initializing
+Initialization completed successfully
 ```
 
 ### Preview 2 Test
@@ -35,4 +35,4 @@ Result of hello(): world
 
 * Builds the preview2 adapter
 * Runs `wasm-tools new` to generate the component
-* Executes the
+* Executes the component with preview2-prototyping host as a command
