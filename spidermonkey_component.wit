@@ -1,5 +1,0 @@
-world spidermonkey-component {
-  default export interface {
-    init: func(source: string, name: string) -> result<_, string>
-  }
-}
