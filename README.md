@@ -5,7 +5,7 @@ Prerequisites:
 * wasm-tools in path
 
 ```
-git clone git@github.com:guybedford/preview2-test
+git clone git@github.com:guybedford/spidermonkey-component-test
 cd preview2-test
 git submodule init && git submodule update
 ```
