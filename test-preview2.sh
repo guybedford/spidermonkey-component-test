@@ -1,3 +1,4 @@
+cp patch-host-main.rs preview2-prototyping/host/src/main.rs
 cd preview2-prototyping
 cargo build --target wasm32-unknown-unknown --release --features command
 cargo build -p host --release
