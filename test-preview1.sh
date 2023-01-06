@@ -1,1 +1,0 @@
-node --experimental-wasi-unstable-preview1 test-preview1.js

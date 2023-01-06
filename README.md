@@ -1,12 +1,12 @@
 ### Preview2 Test
 
 Prerequisites:
-* Node.js
+* Wasmtime
 * wasm-tools in path
 
 ```
 git clone git@github.com:guybedford/spidermonkey-component-test
-cd preview2-test
+cd spidermonkey-component-test
 git submodule init && git submodule update
 ```
 
@@ -15,10 +15,8 @@ git submodule init && git submodule update
 Demonstrates that the example does work:
 
 ```
-node --experimental-wasi-unstable-preview1 test-preview1.js
+wasmtime spidermonkey_component.core.wasm
 ```
-
-* Executes `spidermokey_component.core.wasm` with some custom binding wrapping.
 
 Result:
 
