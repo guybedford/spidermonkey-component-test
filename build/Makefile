@@ -43,13 +43,10 @@ DEFINES += -DMOZ_JS_STREAMS
 
 OBJS := $(patsubst src/%.cpp,obj/%.o,$(wildcard src/*.cpp))
 
-obj/component_runtime.wasm: obj/component_runtime.core.wasm wasi_snapshot_preview1.wasm
-	$(WASM_TOOLS) component new obj/component_runtime.core.wasm --adapt wasi_snapshot_preview1=wasi_snapshot_preview1.wasm -o $@
-
-obj/component_runtime.core.wasm: $(OBJS) | $(SM_SRC)
+../spidermonkey_component.core.wasm: $(OBJS) | $(SM_SRC)
 	PATH="$(FSM_SRC)/scripts:$$PATH" $(WASI_CXX) $(CXX_FLAGS) $(CXX_OPT) $(DEFINES) $(LD_FLAGS) -o $@ $^ $(SM_SRC)/lib/*.o $(SM_SRC)/lib/*.a
 
-obj/component_runtime.core.opt.wasm: obj/component_runtime.core.wasm
+../spidermonkey_component.core.opt.wasm: obj/component_runtime.core.wasm
 	$(WASM_OPT) --strip-debug -o $@ $^
 
 obj/%.o: src/%.cpp Makefile | $(SM_SRC) obj
