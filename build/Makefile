@@ -9,10 +9,6 @@ ifndef WIT_BINDGEN
 	WIT_BINDGEN = $(error No wit-bindgen in PATH, consider doing cargo install --git https://github.com/bytecodealliance/wit-bindgen wit-bindgen-cli)
 endif
 
-ifndef JSCT
-	JSCT = $(error No JSCT in PATH. Run npm install -g jsct)
-endif
-
 ifndef WASM_OPT
 	WASM_OPT = $(error No Binaryen wasm-opt in PATH)
 endif
