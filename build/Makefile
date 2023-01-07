@@ -46,7 +46,7 @@ OBJS := $(patsubst src/%.cpp,obj/%.o,$(wildcard src/*.cpp))
 ../spidermonkey_component.core.wasm: $(OBJS) | $(SM_SRC)
 	PATH="$(FSM_SRC)/scripts:$$PATH" $(WASI_CXX) $(CXX_FLAGS) $(CXX_OPT) $(DEFINES) $(LD_FLAGS) -o $@ $^ $(SM_SRC)/lib/*.o $(SM_SRC)/lib/*.a
 
-../spidermonkey_component.core.opt.wasm: obj/component_runtime.core.wasm
+../spidermonkey_component.core.opt.wasm: ../spidermonkey_component.core.wasm
 	$(WASM_OPT) --strip-debug -o $@ $^
 
 obj/%.o: src/%.cpp Makefile | $(SM_SRC) obj
@@ -57,11 +57,6 @@ obj:
 
 $(SM_SRC):
 	cd spidermonkey-wasi-embedding && ./download-engine.sh
-
-wasi_snapshot_preview1.wasm: ../preview2-prototyping/wasi-common/src/*.rs ../preview2-prototyping/src/*
-	# curl -L https://github.com/bytecodealliance/preview2-prototyping/releases/download/latest/wasi_snapshot_preview1.wasm -o $@
-	cd ../preview2-prototyping && cargo build --target wasm32-unknown-unknown --release --features command
-	cp ../preview2-prototyping/target/wasm32-unknown-unknown/release/wasi_snapshot_preview1.wasm .
 
 clean:
 	rm -r obj && rm component-runtime.wasm
