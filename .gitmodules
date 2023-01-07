@@ -1,3 +1,6 @@
 [submodule "preview2-prototyping"]
 	path = preview2-prototyping
 	url = git@github.com:bytecodealliance/preview2-prototyping
+[submodule "build/spidermonkey-wasi-embedding"]
+	path = build/spidermonkey-wasi-embedding
+	url = git@github.com:fastly/spidermonkey-wasi-embedding

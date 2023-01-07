@@ -43,3 +43,10 @@ Level::Info I/O: Intialization completed successfully
 ```
 
 Where the "correct" prompt comes from patching a closed file descriptor to a log
+
+### Building the Embedding
+
+```
+cd build
+make
+```
